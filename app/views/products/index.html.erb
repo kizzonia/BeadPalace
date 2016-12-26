@@ -1,0 +1,49 @@
+		<!-- Home -->
+			<section class="portfolio-header section-background" id="header">
+				<nav class="navbar navbar-default" id="navigation-bar">
+					<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="#">BeadPalace</a>
+						</div> <!-- /.navbar-header -->
+						<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+								<li><%= link_to "HOME", root_path %></li>
+								<li class="active"> <%= link_to 'Products', categories_path  %></li>
+								<li><%= link_to "View basket", basket_path  %></li>
+								<li><a href="#about">about us</a></li>
+								<li><a href="#service">services</a></li>
+							</ul> <!-- /.nav -->
+							</div><!-- /.navbar-collapse -->
+						</div><!-- /.container -->
+				</nav>
+			<h2 class="header1 text-center">
+				<%= @product_category.name %> Beads </h2>
+					<p class="header-sub text-center" >
+							items in <%= @product_category.name %> Category </p>
+											 <!-- /.section-background -->
+							</section>
+
+		<!---===================Products.show===================================================================-->
+	<!-- Portfolio -->
+
+	<section class="portfolio" id="portfolio">
+<!--- List categories -->
+		<div class="container section-wrapper">
+			<ul class="list-inline">
+      <%  if @products.empty? %>
+         <p class=""> There are no products in this category </p>
+        <% else %>
+         <%= render 'shared/product_list', :products => @products %>
+	    <% end %>
+      </ul>
+				</div>
+				 <!-- /.col-md-4 -->
+		</div> <!-- /.container -->

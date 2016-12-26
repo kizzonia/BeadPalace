@@ -1,0 +1,116 @@
+<section class="portfolio-header section-background" id="header">
+
+  <nav class="navbar navbar-default" id="navigation-bar">
+    <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "BeadPalace", root_path, class: "navbar-brand" %>
+      </div> <!-- /.navbar-header -->
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "HOME", root_path %></li>
+
+          <li class=""> <%= link_to 'Categories', categories_path  %>
+
+                        </li>
+          <li class="active"><%= link_to "View basket", basket_path  %></li>
+          <li><a href="#about">about us</a></li>
+          <li><a href="#service">services</a></li>
+        </ul> <!-- /.nav -->
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+  </nav>
+<h2 class="header1 text-center">
+        <%= fa_icon "mastercard" %> Place your order </h2>
+        <br />
+        <br />
+          </section>
+
+
+	<section class="portfolio" id="portfolio">
+
+		<div class="container section-wrapper">
+			<h2 class="section-title black">
+			Check-Out
+			</h2>
+			<p class="text-center"><%= link_to "View basket", basket_path, class: "btn btn-default" %></p> <!-- /.section-title -->
+			<div class="underline purple"></div>
+
+<div class="col-lg-8 col-md-offset-3" >
+<%= form_for @order, :url => checkout_path, :html => {:class => "form-horizontal center"} do |f| %>
+                <%= f.error_messages %>
+   <div class="form-group">
+    <div class="col-md-8 ">
+    <%= f.text_field :first_name, class: "form-control col-md-4 ", placeholder: "Your Name" %>
+        </div>
+    </div>
+   <div class="form-group">
+    <div class=" col-md-8 ">
+     <%= f.text_field :last_name, class: "form-control col-md-8	", placeholder: "Last name"  %>
+    </div>
+    </div>
+
+   <div class="form-group">
+    <div class=" col-md-8">
+    <%= f.text_field :billing_address1, class: "form-control col-md-8", placeholder: "Address" %>
+   </div>
+  </div>
+
+   <div class="form-group">
+    <div class=" col-md-8">
+    <%= f.text_field :billing_address2, class: "form-control col-md-8", placeholder: "Street" %>
+   </div>
+  </div>
+
+   <div class="form-group">
+    <div class=" col-md-8">
+    <%= f.text_field :billing_address3, class: "form-control col-md-8", placeholder: "Town/City" %>
+   </div>
+  </div>
+
+   <div class="form-group">
+    <div class=" col-md-8">
+    <%= f.text_field :billing_address4, class: "form-control col-md-8", placeholder: "State & Country" %>
+   </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-8">
+    <%= f.text_field :billing_postcode, class: "form-control col-md-8", placeholder: "post-code" %>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <div class=" col-md-8">
+    <%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name, :include_blank => true %>
+    </div>
+   </div>
+
+   <div class="form-group">
+    <div class="col-md-8">
+    <%= f.text_field :email_address, class: "form-control col-md-8", placeholder: "Email address" %>
+    </div>
+    </div>
+
+    <div class="form-group">
+    <div class=" col-md-8">
+    <%= f.text_field :phone_number, class: "form-control col-md-8", placeholder: "Your Phone Number" %>
+    </div>
+    </div>
+
+    <div class="col-md-8">
+    <%= f.submit 'Continue', class: "btn btn-success col-md-4 col-sm-offset-1" %>
+  	</div>
+
+    <% end %>
+  </div>
+  </div >
+</div >

@@ -1,0 +1,62 @@
+
+<table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Quantity/Update</th>
+        <th>Price</th>
+                <th>Sub-total</th>
+                <th><%= Shoppe.settings.tax_name %></th>
+                <th>delivery_service </th>
+                <th>Total</th>
+      </tr>
+            </thead>
+            <tbody>
+              <tr>
+
+                <% for item in order.order_items %>
+                <td>  <%= item.ordered_item.full_name %></td>
+        <td>
+        <div class="input-append">
+          <%= item.quantity %>
+                <% unless defined?(readonly) %>
+        <%= link_to "-", adjust_basket_item_quantity_path(item.id), :method => :delete, :class => 'ajax', class: "btn btn-sm btn-default" %>
+        <%= fa_icon "icon-minus" %>
+        <%= link_to "+", adjust_basket_item_quantity_path(item.id), :method => :post, :class => 'ajax', class: "btn btn-sm btn-success" %>
+        <%= fa_icon "icon-plus" %>
+        <%= link_to "Delete", remove_basket_item_path(item), :method => :delete, :class => 'delete ajax', class: "btn btn-md btn-danger" %>
+        <%= fa_icon "icon-remove icon-white" %>
+                <% end %>
+      </div>
+        </td>
+            <% unless defined?(readonly) %>
+        <td><%= number_to_currency item.sub_total %> sub_total </td>
+        <td><%= number_to_currency item.tax_amount %> tax </td>
+        <td><%= number_to_currency item.total %> Total </td>
+          <% end %>
+  <% end %>
+              </tr>
+
+  </tbody>
+              <tfoot>
+                <tr>
+                <% if order.delivery_service %>
+                    <td>
+                      <% if defined?(readonly) %>
+                        <%= order.delivery_service.name %></td>
+                      <% else %>
+                      <td>
+                        <%= form_tag change_delivery_service_path do  %>
+                          <%= select_tag 'delivery_service', options_from_collection_for_select(order.available_delivery_services, :id, :name, order.delivery_service.id) %></td>
+                              <% end %></td>
+                    <td><%= number_to_currency order.delivery_price %></td>
+                          <% end %>
+                    </tr>
+                    <% end %>
+                 <tr>
+
+                <td colspan="6" style="text-align:right"><strong>TOTAL =</strong></td>
+                <td class="btn btn-success btn-lg" style="display:block"> <strong><%= number_to_currency order.total %></strong></td>
+              </tr>
+           </tfoot>
+          </table>

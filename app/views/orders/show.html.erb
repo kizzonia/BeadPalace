@@ -1,0 +1,52 @@
+<section class="portfolio-header section-background" id="header">
+
+  <nav class="navbar navbar-default" id="navigation-bar">
+    <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "BeadPalace", root_path, class: "navbar-brand" %>
+      </div> <!-- /.navbar-header -->
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "HOME", root_path %></li>
+
+          <li class=""> <%= link_to 'Categories', categories_path  %>
+
+                        </li>
+          <li class="active"><%= link_to "View basket", basket_path  %></li>
+          <li><a href="#about">about us</a></li>
+          <li><a href="#service">services</a></li>
+        </ul> <!-- /.nav -->
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+  </nav>
+<h2 class="header1 text-center">
+        <%= fa_icon "shopping-cart" %> Your shopping bag  </h2>
+        <br />
+        <br />
+          </section>
+
+
+          <div class="container section-wrapper">
+            <div class="row">
+
+      <blockquote class="portfolio-item-details">
+          The items listed below are currently in your shopping bag. If you're ready to place your order
+          just click the 'Checkout' button on the right and we'll ask for a few details and place the order.
+        </blockquote>
+        <%= render 'shared/order_items', :order => current_order %>
+        <p class="portfolio-item-details list-inline text-center">
+          <%= link_to "veiw my bag", basket_path, class: "btn btn-default" %>
+          <%= link_to "checkout", checkout_path, class: "btn btn-success" %>
+        </p>
+
+</div>
+</div>

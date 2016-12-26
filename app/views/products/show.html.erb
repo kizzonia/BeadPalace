@@ -1,0 +1,97 @@
+  <!-- Home -->
+      <section class="portfolio-header section-background" id="header">
+
+        <nav class="navbar navbar-default" id="navigation-bar">
+          <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index-one-page.html">BeadPalace</a>
+            </div> <!-- /.navbar-header -->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to "HOME", root_path %></li>
+
+                <li class="active"> <%= link_to 'Categories', categories_path  %>
+
+                              </li>
+                <li><%= link_to "View basket", basket_path  %></li>
+                <li><a href="#about">about us</a></li>
+                <li><a href="#service">services</a></li>
+              </ul> <!-- /.nav -->
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav>
+      <h2 class="header1 text-center">
+                <%= @product.name %>  </h2>
+                      <div class="container">
+                          <ol class="breadcrumb">
+                            <li><%= link_to "Home", root_path %></li>
+                            <li class="active">&nbsp;<%= @product.name %></li>
+                          </ol>
+                        </div> <!--
+                       <!-- /.section-background -->
+              </section> <!-- /#header -->
+
+<!---body-->
+<div class="container section-wrapper">
+  <div class="row">
+			<div id="gallery" class="col-md-4">
+            <%= link_to @product.permalink, title: @product.name do %>
+              <% if @product.default_image %>
+                <%= image_tag @product.default_image.path, class: "img-responsive port-item"%>
+              <% end %>
+            <% end %>
+			</div>
+
+			<div class="span6 col-md-offset-1">
+				<h3 class="portfolio-item-title"><%= @product.name %> </h3>
+				<hr class="soft"/>
+        <%= form_tag buy_product_path(@product.product_category.permalink, @product.permalink), :class => (@product.in_stock? ? 'in-stock' : 'no-stock'), class: "control-group" do %>
+        <div class="controls">
+            <%= select_tag 'quantity', options_for_select([1,2,3,4,5,6,7,8,9]), :disabled => !@product.in_stock? %>
+            <% end %>
+            <%= link_to "Add to bag", buy_product_path(@product.product_category.permalink, @product.permalink), :method => :post, class: "btn btn-default pull-right" %>
+              <%= fa_icon "shopping-cart" %>
+
+          </div>
+
+				<hr class="soft"/>
+        <% if @product.in_stock? %>
+				<h4 class="portfolio-item-title"> Avaliable </h4>
+        <% else %>
+        	<h4 class="portfolio-item-title"> Out of stock try again in 2days </h4>
+        <%= link_to "Keep Shopping", categories_path %>
+        <% end %>
+				<hr class="soft clr"/>
+				<p class="portfolio-item-detail">
+		        <%= @product.short_description %>
+				</p>
+				<a class="btn btn-small pull-right" href="#detail">More Details</a>
+				<br class="clr"/>
+			<a href="#" name="detail"></a>
+			<hr class="soft"/>
+			</div>
+      		<br class="clr"/>
+
+			<div class="span9">
+            <ul id="productDetail" class="nav nav-tabs">
+              <li class="active"><a href="#home" data-toggle="tab">Product Details</a></li>
+
+            </ul>
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade active in" id="home">
+			  <h4 class="portfolio-item-details">Product Information</h4>
+				<p>
+		        <%= @product.description %>
+				</p>
+              </div>
+
+			</div>

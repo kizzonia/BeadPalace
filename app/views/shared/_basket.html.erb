@@ -1,0 +1,16 @@
+
+
+<div class="basket col-md-4 col-sm-6">
+  <div class="portfolio-item">
+  <% if has_order? && current_order.has_items? %>
+    <p class="portfolio-item-name">
+      <%= pluralize current_order.total_items, 'item' %> in your shopping bag </p>
+      <p class="portfolio-item-details list-inline">
+        <%= link_to "veiw my bag", basket_path, class: "btn btn-default" %>
+        <%= link_to "checkout", checkout_path, class: "btn btn-success" %>
+      </p>
+    <% else %>
+    <p class="portfoiio-item-header">Your bag is empty </p>
+    <% end %>
+    </div>
+  </div>
