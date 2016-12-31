@@ -21,106 +21,106 @@
 
 
 
-    <div class="container">
-      <div class="col-md-12">
-        <ul class="breadcrumb">
-          <li><a href="#">Home</a></li>
-          <li> <%= @product.name %></li>
-        </ul>
+<div class="container">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li> <%= @product.name %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="page-break"></div>
+<div class="container">
+
+  <div class="col-md-3">
+    <div class="page-break"></div><div class="page-break"></div>
+    <div class="panel panel-default sidebar-menu">
+      <div class="panel-heading">
+        <h3 class="panel-title">Categories</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked category-menu">
+          <li><a href="">Beads <span class="badge pull-right">45</span></a></li>
+
+          <ul>
+            <% for category in @product_categories %>
+            <li><%= link_to category.name, products_path(category.permalink)%></li>
+            <% end %>
+          </ul>
+
+        </div>
       </div>
     </div>
 
-    <div class="page-break"></div>
-    <div class="container">
+    <!--- sidebar end -->
+    <div class="col-md-9 box-none">
+      <section>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-6 ">
+              <% if @product.default_image %>
+              <%= image_tag @product.default_image.path, class: "img-responsive"%>
+              <% end %>                    </div>
+              <div class="col-md-5 col-md-offset-1 ">
+                <div class="box-title">
+                  <h1 class="page-header text-center"><%= @product.name %> </h1>
+                  <h3 class="page-header text-center"> Price : <%= @product.price %></h3>
+                  <% if @product.in_stock? %>
+                  <h4 class="text-center"> Avaliable </h4>
+                  <% else %>
+                  <h4 class="text-muted"> Out of stock try again in 2days </h4>
+                  <%= link_to "Keep Shopping", categories_path %>
+                  <% end %>
 
-      <div class="col-md-3">
-        <div class="page-break"></div><div class="page-break"></div>
-        <div class="panel panel-default sidebar-menu">
-          <div class="panel-heading">
-            <h3 class="panel-title">Categories</h3>
-          </div>
-          <div class="panel-body">
-            <ul class="nav nav-pills nav-stacked category-menu">
-              <li><a href="">Beads <span class="badge pull-right">45</span></a></li>
+                  <br>
 
-              <ul>
-								<% for category in @product_categories %>
-                <li><%= link_to category.name, products_path(category.permalink)%></li>
-								<% end %>
-              </ul>
-
-            </div>
-          </div>
-        </div>
-
-        <!--- sidebar end -->
-          <div class="col-md-9 box-none">
-          <section>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="col-md-6 ">
-                    <% if @product.default_image %>
-                      <%= image_tag @product.default_image.path, class: "img-responsive"%>
-                    <% end %>                    </div>
-                    <div class="col-md-5 col-md-offset-1 ">
-                      <div class="box-title">
-                        <h1 class="page-header text-center"><%= @product.name %> </h1>
-                        <h3 class="page-header text-center"> Price : <%= @product.price %></h3>
-                        <% if @product.in_stock? %>
-                				<h4 class="text-center"> Avaliable </h4>
-                        <% else %>
-                        	<h4 class="text-muted"> Out of stock try again in 2days </h4>
-                        <%= link_to "Keep Shopping", categories_path %>
-                        <% end %>
-
-                        <br>
-
-                        <div class="button-wrapper">
-                          <%= form_tag buy_product_path(@product.product_category.permalink, @product.permalink), :class => (@product.in_stock? ? 'in-stock' : 'no-stock'), class: "control-group" do %>
-                          <div class="form-control">
-                              <%= select_tag 'quantity', options_for_select([1,2,3,4,5,6,7,8,9]), :disabled => !@product.in_stock? %>
-                              <%= link_to buy_product_path(@product.product_category.permalink, @product.permalink), :method => :post, class: "btn-me btn-in" do %>
-                                <i class="fa fa-shopping-cart"></i> Add to Cart  <%end %>
-                              <% end %>
-                            </div>
-                        </div>
-
-                      </div>
-                      </div>
+                  <div class="button-wrapper">
+                    <%= form_tag buy_product_path(@product.product_category.permalink, @product.permalink), :class => (@product.in_stock? ? 'in-stock' : 'no-stock'), class: "control-group" do %>
+                    <div class="controls">
+                      <%= select_tag 'quantity', options_for_select([1,2,3,4,5,6,7,8,9]), :disabled => !@product.in_stock? %>
+                      <%= link_to buy_product_path(@product.product_category.permalink, @product.permalink), :method => :post, class: "btn-me btn-in" do %>
+                      <i class="fa fa-shopping-cart"></i> Add to Cart  <%end %>
+                      <% end %>
                     </div>
-                    </div>
-                </section>
-                  <!-- End col Section-->
-                  <br />  <br />
+                  </div>
 
-
-
-
-                  <br />  <br />
-                                    <div class="span12">
-                                      <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                          <div class="panel-title">
-                                            <h4><%= @product.name  %></h3>
-                                          </div>
-                                        </div>
-                                        <div class="panel-body">
-                                          <p>
-		                                          <%= @product.description %>
-                                            </p>
-                                            <blockquote>
-                                          <%= @product.short_description %>
-                                            </blockquote>
-
-                          <p class="summary">
-                            Manufactuerd by beadpalace
-                          </p>
-                        </div>
-                        <div class="panel-footer">
-                        <%= @product.created_at.strftime("%b, %d, %y") %>
-                      </div>
-                    </div>
                 </div>
-
               </div>
             </div>
+          </div>
+        </section>
+        <!-- End col Section-->
+        <br />  <br />
+
+
+
+
+        <br />  <br />
+        <div class="span12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="panel-title">
+                <h4><%= @product.name  %></h3>
+                </div>
+              </div>
+              <div class="panel-body">
+                <p>
+                  <%= @product.description %>
+                </p>
+                <blockquote>
+                  <%= @product.short_description %>
+                </blockquote>
+
+                <p class="summary">
+                  Manufactuerd by beadpalace
+                </p>
+              </div>
+              <div class="panel-footer">
+                <%= @product.created_at.strftime("%b, %d, %y") %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  #
+  devise_for :shoppers
+    resources :blogs
+  
   # shoppe admin
   mount Shoppe::Engine => "/shoppe"
   #

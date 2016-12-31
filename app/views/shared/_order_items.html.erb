@@ -1,62 +1,87 @@
+<div class="page-break"></div>
 
-<table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>Quantity/Update</th>
-        <th>Price</th>
-                <th>Sub-total</th>
-                <th><%= Shoppe.settings.tax_name %></th>
-                <th>delivery_service </th>
-                <th>Total</th>
-      </tr>
-            </thead>
-            <tbody>
-              <tr>
+  <div class="container">
+    <div class="col-md-8" >
+      <div class="box-none">
+        <form method="post" action="checkout1.html">
+          <h2>Shopping cart</h2>
+          <p class="text-muted">You currently have 3 item(s) in your cart.</p>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th colspan="2">Product</th>
+                  <th>Quantity</th>
+                  <th>Unit price</th>
+                  <th>Delivery service</th>
+                  <th>Delivery service price </th>
+                  <th colspan="2">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                    <% for item in order.order_items %>
+                <tr>
+                  <td>
+                    <p>  <%= item.ordered_item.full_name %> </p>
+                  </td>
+                  <td>
+                    <div class="input-append">
+                      <%= item.quantity %>
+                            <% unless defined?(readonly) %>
+                    <%= link_to "-", adjust_basket_item_quantity_path(item.id), :method => :delete, :class => 'ajax', class: "btn btn-sm btn-default" %>
 
-                <% for item in order.order_items %>
-                <td>  <%= item.ordered_item.full_name %></td>
-        <td>
-        <div class="input-append">
-          <%= item.quantity %>
-                <% unless defined?(readonly) %>
-        <%= link_to "-", adjust_basket_item_quantity_path(item.id), :method => :delete, :class => 'ajax', class: "btn btn-sm btn-default" %>
-        <%= fa_icon "icon-minus" %>
-        <%= link_to "+", adjust_basket_item_quantity_path(item.id), :method => :post, :class => 'ajax', class: "btn btn-sm btn-success" %>
-        <%= fa_icon "icon-plus" %>
-        <%= link_to "Delete", remove_basket_item_path(item), :method => :delete, :class => 'delete ajax', class: "btn btn-md btn-danger" %>
-        <%= fa_icon "icon-remove icon-white" %>
-                <% end %>
-      </div>
-        </td>
-            <% unless defined?(readonly) %>
-        <td><%= number_to_currency item.sub_total %> sub_total </td>
-        <td><%= number_to_currency item.tax_amount %> tax </td>
-        <td><%= number_to_currency item.total %> Total </td>
-          <% end %>
-  <% end %>
-              </tr>
+                    <%= link_to "+", adjust_basket_item_quantity_path(item.id), :method => :post, :class => 'ajax', class: "btn btn-sm btn-success" %>
 
-  </tbody>
+
+                            <% end %>
+                  </div>
+                  </td>
+                    <td><%= number_to_currency item.total %></td>
+                  <td>
+                    <% if order.delivery_service %>
+                          <% if defined?(readonly) %>
+                            <%= order.delivery_service.name %>
+                          <% else %>
+                        </td>
+                        <td>
+                            <%= form_tag change_delivery_service_path do  %>
+                              <%= select_tag 'delivery_service', options_from_collection_for_select(order.available_delivery_services, :id, :name, order.delivery_service.id) %></td>
+                                  <% end %>
+                                </td>
+                        <td><%= number_to_currency order.delivery_price %></td>
+                              <% end %>
+
+                        <% end %>
+                  <td><%= link_to  remove_basket_item_path(item), :method => :delete, :class => 'delete ajax' do %>
+                      <i class="fa fa-trash-o"></i>
+                      <%= end %>
+                  </td>
+                </tr>
+
+              </tbody>
               <tfoot>
                 <tr>
-                <% if order.delivery_service %>
-                    <td>
-                      <% if defined?(readonly) %>
-                        <%= order.delivery_service.name %></td>
-                      <% else %>
-                      <td>
-                        <%= form_tag change_delivery_service_path do  %>
-                          <%= select_tag 'delivery_service', options_from_collection_for_select(order.available_delivery_services, :id, :name, order.delivery_service.id) %></td>
-                              <% end %></td>
-                    <td><%= number_to_currency order.delivery_price %></td>
-                          <% end %>
-                    </tr>
-                    <% end %>
-                 <tr>
+                  <th colspan="5">Total</th>
+                  <th colspan="2"><%= number_to_currency order.total %></th>
+                </tr>
+              </tfoot>
+            </table>
 
-                <td colspan="6" style="text-align:right"><strong>TOTAL =</strong></td>
-                <td class="btn btn-success btn-lg" style="display:block"> <strong><%= number_to_currency order.total %></strong></td>
-              </tr>
-           </tfoot>
-          </table>
+          </div>
+          <!-- /.table-responsive -->
+
+          <div class="box-footer">
+            <div class="pull-left">
+              <%= link_to categories_path, class: "btn btn-default" do %><i class="fa fa-chevron-left"></i> Continue shopping<% end %>
+            </div>
+            <div class="pull-right">
+              <%=link_to basket_path, class: "btn btn-default" do %><i class="fa fa-refresh"></i> Update basket<% end %>
+              <%= link_to checkout_path, class: "btn btn-primary" do %>Proceed to checkout <i class="fa fa-chevron-right"><%end%>
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
