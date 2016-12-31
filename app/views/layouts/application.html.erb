@@ -9,28 +9,193 @@
   <!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">  <![endif]-->
   <!--[if IE 9]><html class="ie ie9 lte9" lang="en-US"><![endif]-->
   <!--[if (gt IE 9)|!(IE)]><!-->
-  <html class="noIE" lang="en-US">
+  <html  lang="en-US">
   <!--<![endif]-->
-    <head>
-      <!-- meta -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+  <head>
+    <!-- meta -->
 
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Obaju e-commerce template">
+    <meta name="author" content="Fortune jakes | fcoders.tech">
+    <meta name="keywords" content="">
 
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="assets/js/html5shiv.js"></script>
-          <script src="assets/js/respond.js"></script>
-        <![endif]-->
+    <title>
+      BeadPalace: Largest Growing Bead Shop
+    </title>
 
-        <!--[if IE 8]>
-            <script src="assets/js/selectivizr.js"></script>
-          <![endif]-->
-</head>
+    <meta name="keywords" content="">
 
-<!-- Home -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
+
+  </head>
+
+  <!-- Navbar -->
+
+  <section class="section-header">
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <!-- LOGO -->
+          <!-- TEXT BASED LOGO -->
+          <a class="navbar-brand" href="index.html" >Bead <strong>Palace </strong> </a>
+          <!-- IMG BASED LOGO  -->
+          <!--            <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="logo"></a> -->
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul id="top-menu" class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Bead Shop", categories_path %></li>
+            <li><%= link_to basket_path do %><i class="fa fa-shopping-cart"></i> <% end %></li>
+
+            <li>  <a href="#" id="search-icon">
+              <i class="fa fa-search">
+              </i>
+            </a>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+
+    </div>
+  </nav>
+</section>
 <%= yield %>
+
+<!--Footer -->
+
+<section class="footer">
+  <div id="footer" data-animate="fadeInUp">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <h4>Info</h4>
+
+          <ul>
+            <li><a href="text.html">About us</a>
+            </li>
+            <li><a href="text.html">Terms and conditions</a>
+            </li>
+            <li><a href="faq.html">FAQ</a>
+            </li>
+            <li><a href="contact.html">Contact us</a>
+            </li>
+          </ul>
+
+          <hr>
+
+          <h4>User section</h4>
+
+          <ul>
+            <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+            </li>
+            <li><a href="register.html">Regiter</a>
+            </li>
+          </ul>
+
+          <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        <!-- /.col-md-3 -->
+
+        <div class="col-md-3 col-sm-6">
+
+          <h4>Top categories</h4>
+
+          <h5>Ladies</h5>
+          <ul>
+            <li><a href="category.html">Emerald</a>
+            </li>
+            <li><a href="category.html">Glass</a>
+            </li>
+            <li><a href="category.html">Plastic</a>
+            </li>
+            <li><a href="category.html">Accessories</a>
+            </li>
+          </ul>
+
+          <hr class="hidden-md hidden-lg">
+
+        </div>
+        <!-- /.col-md-3 -->
+
+        <div class="col-md-3 col-sm-6">
+
+          <h4>Where to find us</h4>
+
+          <p><strong>BeadPalace .Inc</strong>
+            <br>186 Cameroun Road
+            <br>Abia State
+            <br>Nigeria
+            <br>
+            <strong>West Africa</strong>
+          </p>
+
+          <a href="contact.html">Go to contact page</a>
+
+          <hr class="hidden-md hidden-lg">
+
+        </div>
+        <!-- /.col-md-3 -->
+
+
+
+        <div class="col-md-3 col-sm-6">
+
+          <h4>Get the news</h4>
+
+          <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+
+          <form>
+            <div class="input-group">
+
+              <input type="text" class="form-control"></input>
+
+              <span class="" style="margin-top:10px;">
+
+                <button class="btn btn-default btn-xs"  type="button">Subscribe!</button>
+
+              </span>
+
+            </div>
+            <!-- /input-group -->
+          </form>
+
+          <hr>
+
+          <h4>Stay in touch</h4>
+
+          <p class="social">
+            <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
+            <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
+          </p>
+
+
+        </div>
+        <!-- /.col-md-3 -->
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /#footer -->
+
+</section>
 
 </body>
 </html>

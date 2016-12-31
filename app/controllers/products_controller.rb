@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
 
   def index
     @products = @product_category.products.includes(:product_categories, :variants).root.active
+    @product_categories = Shoppe::ProductCategory.ordered
+
   end
 
   def filter
@@ -23,8 +25,10 @@ class ProductsController < ApplicationController
 
   def show
     @attributes = @product.product_attributes.public.to_a
+    @product_categories = Shoppe::ProductCategory.ordered
+
   end
-  
+
   def add_to_basket
     product_to_order = params[:variant] ? @product.variants.find(params[:variant].to_i) : @product
     current_order.order_items.add_item(product_to_order, params[:quantity].blank? ? 1 : params[:quantity].to_i)

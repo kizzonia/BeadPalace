@@ -1,22 +1,18 @@
 <% for product in products %>
-	  <ul class="list-inline">
-<div class="col-sm-4 col-md-8 col-md-4 col-xs-6">
-<div class='portfolio-item'>
- <div class='portfolio-img'>
-   <%= image_tag product.default_image.path, class: "img-responsive port-item" %>
-
-   <div class='portfolio-img-hover'>
-<% link_to product_path(product.product_category.permalink, product.permalink) do %>
-<%= image_tag "plus.png", class: "plus" %>
-<% end %>
-</div>
-</div>
-<div class="portfolio-item-details">
-							<div class="portfolio-item-name">
-								<%= link_to product.name, product_path(product.product_category.permalink, product.permalink) %>
-								<br><small>Price: <%= number_to_currency product.price %>
-								 </small>
-
-
-							</div> <!-- /.portfolio-item-name -->
+<div class="col-md-3  col-sm-offset-1 box">
+	<%= image_tag product.default_image.path, class: "img-responsive" %>
+				<div class="btn-float ">
+					<%= link_to product_path(product.product_category.permalink, product.permalink), class: "btn btn-default" do %>
+					<i class="fa fa-plus" ><i class="fa fa-shopping-cart "></i></i>
+					<% end %>
+				</div>
+				<div class="box-title">
+					<h3 class="text-center" style="padding-top:30px;"><%= link_to product.name, product_path(product.product_category.permalink, product.permalink) %></h3>
+					<p class="text-center"> <%= number_to_currency product.price %> </p>
+					<br>
+					<p class="button-wrapper">
+						<%= link_to "Veiw details", product_path(product.product_category.permalink, product.permalink), class: "btn-me btn-purple" %>
+					</p>
+				</div>
+			</div>
 <% end %>

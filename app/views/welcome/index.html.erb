@@ -1,328 +1,112 @@
-<body data-spy="scroll" data-target="#bs-example-navbar-collapse-1">
-	<section class="header" id="header">
 
-		<nav class="navbar navbar-default" id="navigation-bar">
-			<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index-one-page.html">BeadPalace</a>
-				</div> <!-- /.navbar-header -->
-
-		    <!-- Collect the nav links, forms, and other content for toggling -->
-			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li><%= link_to "HOME", root_path %></li>
-
-						<li> <%= link_to 'Categories', categories_path  %>
-
-                          </li>
-						<li><a href="#contact">contact</a></li>
-						<li><a href="#about">about us</a></li>
-						<li><a href="#service">services</a></li>
-					</ul> <!-- /.nav -->
-			    </div><!-- /.navbar-collapse -->
-		  	</div><!-- /.container -->
-		</nav>
 
 <!-- Home -->
 
-		<div class="container">
-			<div class="header-table">
-				<div class="header-wrapper">
-					<h1 class="header-title">
-					BeadPalace
-					</h1>
-					<p class="header-subtitle">
-						Buy and Sell your Beads with ease
-					</p>
-				</div> <!-- /.header-wrapper -->
+<section>
+	<div class="wrapper">
+		<div class="intro-bg">
+			<div class="container">
+				<div class="row">
+					<div class="content">
+						<div class="col-md-6">
+							<div class="page-header">
+								<h2> Welcome To The Largest Growing Exclusive Bead Shop</h2>
+							</div>
+							<div class="page-header-subtitle">
+								<p> We sell the best collections of beads and art from all around the globe,</p>
+								<p> So What Are You Waiting For.....? </p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 content">
+						<div class="button-wrapper text-center">
+							<%= link_to  categories_path  do %>
+							<button class="btn-me btn-purple">Start Shopping <i class="fa fa-shopping-cart"></i></button>
+							<% end %>
+							<a href="#featured" class="btn-me btn-in"> View Our Featured Products</a>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div> <!-- /.container -->
-	</section> <!-- /#header -->
-
+		</div>
+	</div>
+</section>
+<div class="clearfix">
+</div>
 
 
 
 
 <!-- Portfolio -->
-  <section class="portfolio" id="portfolio">
-    <div class="container section-wrapper">
-      <h2 class="section-title black">
-      Products
-      </h2> <!-- /.section-title -->
-      <div class="underline purple"></div>
-      <div class="row">
+<section class="features">
+	<div class="container">
+		<div class="col-lg-12 ">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="page-header text-center">
+					<h2 id="featured"> Featured Products </h2>
+				</div>
+				<div class="page-header-subtitle text-center">
+					<p> Visit Our Latest Products </p>
+				</div>
+			</div>
+			<div class="page-break">
+			</div>
+			<div class="page-break">
+			</div>
 
-          <%= render "shared/product_list", :products => @products %>
-        </div> <!-- /.col-md-4 -->
-      </div> <!-- /.row -->
-    </div> <!-- /.container -->
-  </section> <!-- /.portfolio -->
+			<%= render "shared/product_list", :products => @products %>
+		</div>
+	</div>
+</div>
+</section>
 
 
 
 
-<!-- Our Services -->
-  <section class="service" id="service">
-    <div class="container">
-      <div class="_section-wrapper">
-        <h2 class="section-title black">
-          our services
-        </h2> <!-- /.section-title -->
-        <div class="underline purple"></div>
+<div class="page-break"></div><div class="page-break"></div><div class="page-break"></div>
+    <section class="blog-section">
+      <div class="container">
         <div class="row">
-          <div class="">
-            <%= image_tag "service.png", class: "service-img img-responsive" %>
+          <div class="col-md-12 ">
+            <div class="boxing col-md-12 margins">
+            <div class="page-header text-center">
+              <h2> Latest News Trends </h2>
+            </div>
+            <div class="page-header-subtitle text-center">
+              <p> Veiw The Latest Trends Inspired By Celebrites </p>
+            </div>
           </div>
-          <div class="col-md-offset-4 col-md-8 col-sm-12 services">
-            <div class="row">
-              <div class="col-xs-6 col-sm-4">
-                <div class="service-item">
-                  <h3 class="section-item-title">
-                    free delivery
-                  </h3>
-                  <p class="section-item-detail">
-                  We offer free and quick delivery of you beads, We also offer arranged delivery on requests for occasions
-                    </p>
-                </div> <!-- /.service-item -->
+            <div class="page-break"></div>
+
+              <p class="text-center">
+							<%= image_tag "getinspired3.jpg", class: "img-responsive" %>
+            </p>
+
+          </div>
+          <div class="page-break">
+          </div>
+
+          <div class="col-md-6 boxing" >
+              <div class="text-header">
+                <h2>Fashion now </h2>
+                <hr / >
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+                </p>
+                <p><a href="#" class="btn btn-default"> Continue Reading </a></p>
               </div>
-              <div class="col-xs-6 col-sm-4">
-                <div class="service-item">
-                  <h3 class="section-item-title">
-                    refund money
-                  </h3>
-                  <p class="section-item-detail">
-                  We offer refund for broken or damaged beads on delivery
-                    </p>
-                </div> <!-- /.service-item -->
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <div class="service-item">
-                  <h3 class="section-item-title">
-                    24/7 support
-                  </h3>
-                  <p class="section-item-detail">
-                  We are here for you and your request 24/7 all year round, you an also talk to our customer reprensentative on request for orders and helps on issues
-                    </p>
-                </div> <!-- /.service-item -->
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <div class="service-item">
-                  <h3 class="section-item-title">
-                    summer offer
-                  </h3>
-                  <p class="section-item-detail">
-                  Promotions and games are always avaliable during the summer for your entertainment and pleasure
+            </div>
+            <div class="col-md-6 boxing" >
+                <div class="text-header">
+                  <h2>Fashion now </h2>
+                  <hr / >
+                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
                   </p>
-                </div> <!-- /.service-item -->
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <div class="service-item">
-                  <h3 class="section-item-title">
-                    winter offer
-                  </h3>
-                  <p class="section-item-detail">
-                  Offer disocounts are avaliable during the winter holidays and the New Years
-                    </p>
-                </div> <!-- /.service-item -->
-              </div>
-              <div class="col-xs-6 col-sm-4">
-                <div class="service-item">
-                  <h3 class="section-item-title">
-                    best gift
-                  </h3>
-                  <p class="section-item-detail">
-                   Our  Best customer recieves a free gift every month end to apprecaite his/her efforts
-                    </p>
-                </div> <!-- /.service-item -->
-              </div>
-            </div> <!-- /.row -->
-          </div> <!-- /.col-md-6 -->
-        </div> <!-- /.row -->
-      </div> <!-- /.section-wrapper -->
-    </div> <!-- /.container -->
-  </section> <!-- /.service -->
-
-
-
-<!-- About Us -->
-  <section class="about" id="about">
-    <div class="container section-wrapper">
-      <h2 class="section-title black">
-        about us
-      </h2> <!-- /.section-title -->
-      <div class="underline purple"></div>
-      <div class="row">
-        <div class="col-md-3 col-sm-6">
-          <img src="assets/images/about-1.png" alt="about" class="about-img">
-        </div> <!-- /.col-md-3 -->
-        <div class="col-md-3 col-sm-6">
-          <img src="assets/images/about-2.png" alt="about" class="about-img">
-        </div> <!-- /.col-md-3 -->
-
-        <div class="col-md-6 col-sm-12">
-          <p class="about-detail">
-            The BeadPalace is a platform built for the easy selling  and buying of good quality beads for any occasion of your choice be it Party or High table apperances, It is a company that is interested in its customer happiness and also in the reprensentation of beads and jeweleries form all around the Globe
-          </p> <!-- /.about-detail -->
-        </div> <!-- /.col-md-6 -->
-
-      </div> <!-- /.row -->
-
-      <div class="row">
-
-        <div class="col-sm-4">
-          <h3 class="section-item-title">
-            we care
-          </h3>
-          <p class="section-item-detail">
-            Fashion is the life soource of the world,  we care about how the fashion goes  and we care about your looks.
-          </p>
-        </div>
-        <div class="col-sm-4">
-          <h3 class="section-item-title">
-            we deliver
-          </h3>
-          <p class="section-item-detail">
-            We give you assured and trackable delivery services. We make sure that you get your beads  on time on date.
-          </p>
-        </div>
-        <div class="col-sm-4">
-          <h3 class="section-item-title">
-            we're creative
-          </h3>
-          <p class="section-item-detail">
-            Did you know that on BeadPalace. you can order a specific design of beads and get it created and finished for you ? You can order a specific design or draw up a mock-up of the design you wish to be done for you
-          </p>
-        </div>
-      </div> <!-- /.row -->
-
-    </div> <!-- /.container -->
-  </section> <!-- /.about -->
-
-
-
-
-
-<!-- Contact with us -->
-  <section class="contact section-wrapper" id="contact">
-    <div class="container">
-      <div class="row">
-              <div class="col-md-3 contact-item col-sm-6 col-xs-12">
-                  <i class="ion-location"></i>
-                  <h3>Address</h3>
-                  <p class="contact">
-                      186 Cameroun Road <br>
-                      Monuntain View, USA
-                  </p>
-              </div>
-              <div class="col-md-3 contact-item col-sm-6 col-xs-12">
-                  <i class="ion-ios-telephone"></i>
-                  <h3>Phone</h3>
-                  <p class="contact">
-                      Local: +234-81-618-697-77 <br>
-                      Mobile: +234-80-680-839-39
-                  </p>
-              </div>
-              <div class="col-md-3 contact-item col-sm-6 col-xs-12">
-                  <i class="ion-printer"></i>
-                  <h3>Fax</h3>
-                  <p class="contact">
-                      Office: 2148-287-8300 <br>
-                      Home: 2528-782-8200
-                  </p>
-              </div>
-              <div class="col-md-3 contact-item col-sm-6 col-xs-12">
-                  <i class="ion-ios-email"></i>
-                  <h3>Email Address</h3>
-                  <p class="contact">
-                      <a href="mailto:info@fcoders.com">info@fcoders.com</a> <br>
-                      <a href="www.fcoders.com">www.fcoders.com</a>
-                  </p>
-              </div>
-
-
-          </div> <!-- /.row -->
-
-          <form class="row form">
-                <h3>Leave A Message</h3>
-                <div class="col-sm-4 col-xs-12 form-group">
-                    <label class="sr-only">Name</label>
-                    <input name="name" class="form-control" type="text" placeholder="First Name">
-                </div> <!-- /.form-group -->
-                <div class="col-sm-4 col-xs-12 form-group">
-                    <label class="sr-only">Email</label>
-                    <input name="email" class="form-control" type="email" placeholder="Email address">
-                </div> <!-- /.form-group -->
-                <div class="col-sm-4 col-xs-12 form-group">
-                    <label class="sr-only">Website</label>
-                    <input name="website" class="form-control" type="text" placeholder="Your website">
-                </div> <!-- /.form-group -->
-                <div class="row">
-                    <div class="col-md-12 col-xs-12 form-group">
-                        <label class="sr-only">Message</label>
-                        <textarea class="message form-control" placeholder="Write message"></textarea>
-                    </div> <!-- /.form-group -->
-                    <input class="btn btn-sub" type="submit" value="Send Message">
+                  <p><a href="#" class="btn btn-default"> Continue Reading </a></p>
                 </div>
-            </form> <!-- /.row -->
-      
-    </div> <!-- /.container -->
-  </section> <!-- /.contact -->
-
-
-<!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="copy">
-            Copyright &copy; 2015  BeadPalace.LTD
+              </div>
           </div>
         </div>
-        <div class="col-sm-4 text-center">
-          <div class="social-icon">
-            <a href="#">
-              <div class="icon fb">
-                <i class="ion-social-facebook"></i>
-              </div>
-            </a>
-            <a href="#">
-              <div class="icon twitter">
-                <i class="ion-social-twitter"></i>
-              </div>
-            </a>
-            <a href="#">
-              <div class="icon google">
-                <i class="ion-social-googleplus"></i>
-              </div>
-            </a>
-            <a href="#">
-              <div class="icon rss">
-                <i class="ion-social-rss"></i>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-4 text-right">
-          <div class="copy">
-            Theme by <a href="http://www.Fcoders.com">F-Coders.com</a>. All Rights Reserved
-          </div>
-        </div>
-      </div> <!-- /.row -->
-    </div> <!-- /.container -->
-  </footer>
 
-
-
-
-
-
-
-</body>
-</html>
+      </section>

@@ -1,49 +1,67 @@
-		<!-- Home -->
-			<section class="portfolio-header section-background" id="header">
-				<nav class="navbar navbar-default" id="navigation-bar">
-					<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="#">BeadPalace</a>
-						</div> <!-- /.navbar-header -->
-						<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav navbar-right">
-								<li><%= link_to "HOME", root_path %></li>
-								<li class="active"> <%= link_to 'Products', categories_path  %></li>
-								<li><%= link_to "View basket", basket_path  %></li>
-								<li><a href="#about">about us</a></li>
-								<li><a href="#service">services</a></li>
-							</ul> <!-- /.nav -->
-							</div><!-- /.navbar-collapse -->
-						</div><!-- /.container -->
-				</nav>
-			<h2 class="header1 text-center">
-				<%= @product_category.name %> Beads </h2>
-					<p class="header-sub text-center" >
-							items in <%= @product_category.name %> Category </p>
-											 <!-- /.section-background -->
-							</section>
+<section>
+	<div class="page-top-wrapper">
+		<div class="page-top">
+			<div class="container">
+				<div class="row">
+					<div class="content1">
+						<div class="col-md-6">
+							<div class="page-header">
+								<h3> 	<%= @product_category.name %></h3>
+							</div>
+							<div class="page-header-subtitle">
+								<p> items in <%= @product_category.name %> Category</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-		<!---===================Products.show===================================================================-->
-	<!-- Portfolio -->
 
-	<section class="portfolio" id="portfolio">
-<!--- List categories -->
-		<div class="container section-wrapper">
-			<ul class="list-inline">
+
+		<div class="container">
+			<div class="col-md-12">
+				<ul class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li>Product details</li>
+				</ul>
+			</div>
+		</div>
+
+
+    <div class="page-break"></div>
+    <div class="container">
+
+      <div class="col-md-3">
+        <div class="page-break"></div><div class="page-break"></div>
+        <div class="panel panel-default sidebar-menu">
+          <div class="panel-heading">
+            <h3 class="panel-title">Categories</h3>
+          </div>
+          <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked category-menu">
+              <li><a href="">Beads <span class="badge pull-right">45</span></a></li>
+
+              <ul>
+								<% for category in @product_categories %>
+                <li><%= link_to category.name, products_path(category.permalink)%></li>
+								<% end %>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+  		<div class="col-md-9">
+
       <%  if @products.empty? %>
-         <p class=""> There are no products in this category </p>
+         <p class=" text-center page-header-subtitle"> There are no products in this category </p>
         <% else %>
          <%= render 'shared/product_list', :products => @products %>
 	    <% end %>
-      </ul>
+
 				</div>
-				 <!-- /.col-md-4 -->
+				 <!-- /.col-md-9 -->
 		</div> <!-- /.container -->

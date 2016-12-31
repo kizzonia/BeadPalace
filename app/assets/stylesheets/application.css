@@ -10,37 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require font-awesome
+ *= require font-awesome.min
  *= require bootstrap
+ *= require styles
  *= require_tree .
  *= require_self
  */
- @import "main.css";
-
- @import "one-page-style";
- @import "services";
- @import "section";
- @import "about";
-
- @import "contact";
- @import "sight";
-
-
-.header{
-	background: url('../assets/pg-header2.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	background-attachment: fixed;
-	height: 100vh;
-	color: #fff;
-	text-transform: uppercase;
-}
-
-.section-background{
-	background: url('../assets/hhhh.jpg');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-attachment: fixed;
-	text-transform: uppercase;
-}
+ @import "font-awesome.min";
+ @import "animate";
+ @import "styles";
+ @import url("http://fonts.googleapis.com/css?family=Roboto:200,400,700");
+ @import url("http://fonts.googleapis.com/css?family=Roboto+Slab");
+ @import url('https://fonts.googleapis.com/css?family=Jura');
